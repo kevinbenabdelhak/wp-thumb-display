@@ -3,7 +3,7 @@
  * Plugin Name: WP Thumb Display
  * Plugin URI: https://kevin-benabdelhak.fr/plugins/wp-thumb-display/
  * Description: WP Thumb Display ajoute simplement une colonne d'image en avant dans l'admin WordPress pour tous les types de publication.
- * Version: 1.0
+ * Version: 1.1
  * Author: Kevin Benabdelhak
  * Author URI: https://kevin-benabdelhak.fr/
  * Contributors: kevinbenabdelhak
@@ -21,7 +21,7 @@ function add_featured_image_column($columns) {
             $current_order = isset($_GET['sort_by_image']) ? $_GET['sort_by_image'] : 'no_image_first';
             $next_order = ('no_image_first' === $current_order) ? 'image_first' : 'no_image_first';
             
-        // Ajout du lien cliquable pour trier par la colonne image 
+            // Ajout du lien cliquable pour trier par la colonne image 
             $url = add_query_arg('sort_by_image', $next_order);
             $new_columns['thumb'] = '<a href="' . esc_url($url) . '">' . __('Image', 'wp-thumb-display') . '</a>';
         }
@@ -100,6 +100,10 @@ function add_admin_custom_styles() {
 function add_featured_image_column_all_post_types() {
     $post_types = get_post_types(array('public' => true), 'names');
     foreach ($post_types as $post_type) {
+        
+        if ($post_type === 'product') {
+            continue;
+        }
         add_filter("manage_{$post_type}_posts_columns", 'add_featured_image_column');
         add_action("manage_{$post_type}_posts_custom_column", 'display_featured_image_column', 10, 2);
     }
