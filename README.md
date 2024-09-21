@@ -5,7 +5,7 @@
 **Requires at least**: 5.0  
 **Tested up to**: 6.6.2  
 **Requires PHP**: 7.0  
-**Stable tag**: 1.0  
+**Stable tag**: 1.1  
 **License**: GPLv2 or later  
 **License URI**: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -51,6 +51,9 @@ Oui, WP Thumb Display fonctionne avec tous les types de publication publics enre
 Actuellement, la taille des images affichées est fixée à 60px en largeur pour des raisons de mise en page.
 
 ## Mise à jour
+
+### 1.1
+* Désactive la fonction sur le type de contenu produit (qui affiche déjà les images)
 
 ### 1.0
 
